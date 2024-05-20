@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Worker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form .form-group {
+            margin-bottom: 15px;
+        }
+        form .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        form .form-group input, form .form-group select, form .form-group textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+        form button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        form button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Worker</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-group">
+                <label for="id_utility_bill_history">Utility Bill History (upload exactly 6 files)</label>
+                <input type="file" name="utility_bill_history" id="id_utility_bill_history" multiple required>
+            </div>
+            <div class="form-group">
+                <label for="id_rent_payment_history">Rent Payment History (upload exactly 6 files)</label>
+                <input type="file" name="rent_payment_history" id="id_rent_payment_history" multiple required>
+            </div>
+            <div class="form-group">
+                <label for="id_repayment_history">Repayment History (upload exactly 6 files)</label>
+                <input type="file" name="repayment_history" id="id_repayment_history" multiple required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
